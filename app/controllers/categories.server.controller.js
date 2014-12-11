@@ -1,9 +1,9 @@
 'use strict';
 
 var mongoose = require('mongoose'),
-	Category = mongoose.model('Category'),
-	_ = require('lodash'),
-    errorHandler = require('./errors.server.controller');
+    errorHandler = require('./errors.server.controller'),
+    Category = mongoose.model('Category'),
+    _ = require('lodash');
 
 /**
  * Create a Category
@@ -54,7 +54,7 @@ var update = function(req, res) {
 var list = function(req, res) {
 	Category.find().sort('-name').exec(function(err, categories) {
         var error;
-		if (err) {
+		if (err || !categories) {
             error = errorHandler.generateError('Error occurs when attempting to retrieve category list', err);
 			return res.status(400).send(error);
 		} else {

@@ -3,8 +3,8 @@
 var express = require('express'),
     bodyParser = require('body-parser'),
     runningPort = 3000,
-    models = [ 'category' ],
-    routes = [ 'categories' ];
+    models = [ 'category', 'product' ],
+    routes = [ 'categories', 'products' ];
 
 /**
  * Handle errors that may occur in the application
@@ -15,17 +15,16 @@ var handleErrors = function(app) {
      * REST path
      */
     var unknownPath = function(req, res) {
-        res.statusCode = 404;
-        res.send({ error: 'Not found' });
+        res.status(404).send({ error: 'Not found' });
     };
 
     /**
      * Generic error handler that logs the error to console
      */
-    var logError = function(err, req, res) {
+    var logError = function(err, req, res, next) {
         console.error('Error occurs within the application');
         console.dir(err);
-        res.send(err);
+        res.status(400).send(err);
     };
 
     if (app) {
