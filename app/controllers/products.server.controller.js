@@ -98,11 +98,15 @@ var update = function(req, res) {
  * List of Products
  */
 var list = function(req, res) {
-    var query;
+    var hasCategoryInQuery = req.query.hasOwnProperty('categoryId'),
+        hasKeywordInQuery = req.query.hasOwnProperty('keyword'),
+        query;
 
-    if (req.query.hasOwnProperty('categoryId')) {
+    if (hasCategoryInQuery && hasKeywordInQuery) {
+        query = Product.findByCategoryIdAndKeyword(req.query.categoryId, req.query.keyword);
+    } else if (hasCategoryInQuery) {
         query = Product.findByCategoryId(req.query.categoryId);
-    } else if (req.query.hasOwnProperty('keyword')) {
+    } else if (hasKeywordInQuery) {
         query = Product.findByKeyword(req.query.keyword);
     } else {
         query = Product.find();

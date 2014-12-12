@@ -4,7 +4,7 @@ module.exports = function(grunt) {
     // Unified Watch Object
     var watchFiles = {
         serverViews: ['app/views/**/*.*'],
-        serverJS: ['gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
+        serverJS: ['Gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
         clientViews: ['public/modules/**/views/**/*.html'],
         clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
         clientCSS: ['public/modules/**/*.css'],
@@ -14,10 +14,15 @@ module.exports = function(grunt) {
     // Project Configuration
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-
         jshint: {
             all: {
                 src: watchFiles.clientJS.concat(watchFiles.serverJS),
+                options: {
+                    jshintrc: true
+                }
+            },
+            test: {
+                src: watchFiles.mochaTests,
                 options: {
                     jshintrc: true
                 }
@@ -31,6 +36,24 @@ module.exports = function(grunt) {
                     watch: watchFiles.serverJS
                 }
             }
+        },
+        env: {
+            development: {
+                NODE_ENV: 'development'
+            },
+            test: {
+                NODE_ENV: 'test'
+            }
+
+        },
+        mochaTest: {
+            test: {
+                options: {
+                    reporter: 'spec',
+                    require: ['server']
+                },
+                src: watchFiles.mochaTests
+            }
         }
     });
 
@@ -38,10 +61,11 @@ module.exports = function(grunt) {
 
 
     // Default task(s).
-    grunt.registerTask('default', ['lint', 'nodemon']);
-
+    grunt.registerTask('default', ['lint', 'test', 'run-dev']);
 
     // Lint task(s).
     grunt.registerTask('lint', ['jshint']);
 
+    grunt.registerTask('run-dev', ['env:development', 'nodemon']);
+    grunt.registerTask('test', ['env:test', 'mochaTest']);
 };

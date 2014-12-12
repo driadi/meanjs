@@ -20,8 +20,8 @@ var validateImageUrl = function(imageUrl) {
         return true;
     }
 
-    return (imageUrl &&
-        (imageUrl.indexOf('http') === 0 || imageUrl.indexOf('ftp') === 0));
+    imageUrl = imageUrl.toLowerCase();
+    return  (imageUrl.indexOf('http') === 0 || imageUrl.indexOf('ftp') === 0);
 };
 
 /**
@@ -68,8 +68,7 @@ var ProductSchema = new Schema({
 	categories: [{
         type: Schema.Types.ObjectId,
         ref: 'Category',
-        index: true,
-        unique: true
+        index: true
     }],
     nameUpper: {
         // This field is useful when it comes to searching prod by name
@@ -89,6 +88,12 @@ ProductSchema.statics.findByCategoryId = function(categoryId, callback) {
 ProductSchema.statics.findByKeyword = function(keyword, callback) {
     keyword = keyword.toUpperCase();
     return this.find({$or: [{ nameUpper: keyword }, { sku: keyword }]}, callback);
+};
+
+ProductSchema.statics.findByCategoryIdAndKeyword = function(categoryId, keyword, callback) {
+    keyword = keyword.toUpperCase();
+    return this.find({$and: [{ categories: categoryId },
+        {$or: [{ nameUpper: keyword }, { sku: keyword }]}]}, callback);
 };
 
 mongoose.model('Product', ProductSchema);

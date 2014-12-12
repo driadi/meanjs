@@ -2,7 +2,7 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
-    runningPort = 3000,
+    cors = require('cors'),
     models = [ 'category', 'product' ],
     routes = [ 'categories', 'products' ];
 
@@ -15,7 +15,9 @@ var handleErrors = function(app) {
      * REST path
      */
     var unknownPath = function(req, res) {
-        res.status(404).send({ error: 'Not found' });
+        res.status(404).send(
+            { error: { message: 'Not found' }}
+        );
     };
 
     /**
@@ -41,8 +43,8 @@ module.exports = function() {
         require('../app/models/' + model + '.server.model');
     });
 
-    app.set('port', runningPort);
     app.use(bodyParser.json());
+    app.use(cors());
 
     // define routes
     routes.forEach(function(route) {

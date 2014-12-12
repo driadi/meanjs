@@ -69,7 +69,6 @@ var list = function(req, res) {
 var categoryById = function(req, res, next, id) {
 	Category.findById(id).exec(function(err, category) {
 		var error;
-
         if (err || !category) {
             error = errorHandler.generateError('Failed to load Category ' + id, err);
             return next(error);

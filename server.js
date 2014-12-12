@@ -5,10 +5,10 @@
  * Using ExpressJS to connect to Mongo DB and listens on port 3000
  */
 var mongoose = require('mongoose'),
-    dbUri = 'mongodb://localhost/meanproduct';
+    config = require('./config/config');
 
 // Bootstrap db connection
-var db = mongoose.connect(dbUri, function(err) {
+var db = mongoose.connect(config.db, function(err) {
     if (err) {
         console.error('Could not connect to MongoDB!');
         console.dir(err);
@@ -18,14 +18,11 @@ var db = mongoose.connect(dbUri, function(err) {
 // Init the express application
 var app = require('./config/express')();
 
-var appPort = app.get('port');
-
 // Start the app by listening on <port>
-app.listen(appPort);
+app.listen(config.runningPort);
 
 // Logging initialization
-console.log('MEAN.JS application started on port ' + appPort);
-
+console.log('MEAN.JS application started on port ' + config.runningPort);
 
 // Expose app
 exports = module.exports = app;
