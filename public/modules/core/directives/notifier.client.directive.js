@@ -9,7 +9,7 @@
             restrict: 'E',
             replace: true,
             template: [
-                '<div ng-show="show(notification)" ng-class="notificationClass(notification.isError)">',
+                '<div ng-show="show(notification)" role="alert" ng-class="notificationClass(notification.isError)">',
                 '{{ notification.message }}',
                 '</div>'
             ].join(''),
@@ -25,7 +25,8 @@
                 };
 
                 $scope.notificationClass = function(isError) {
-                    return isError ? 'bad-notification' : 'good-notification';
+                    var style = 'alert alert-';
+                    return style + (isError ? 'danger' : 'success');
                 };
             }
         };
