@@ -15,9 +15,13 @@ var prodMgmtApp = (function() {
     var config = function($routeProvider) {
         // Setup the routes
         $routeProvider.when("/home",{
-            templateUrl: "modules/core/views/home.html"
+            templateUrl: "modules/core/views/home.client.view.html"
         }).when("/saveCategory/:categoryId",{
             templateUrl: "modules/categories/views/save-category.client.view.html"
+        }).when("/viewCategory/:categoryId",{
+            templateUrl: "modules/categories/views/view-category.client.view.html"
+        }).when("/products",{
+            templateUrl: "modules/products/views/view-product.client.view.html"
         }).otherwise({redirectTo: "/home"});
     };
 

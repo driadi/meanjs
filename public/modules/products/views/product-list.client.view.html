@@ -1,0 +1,38 @@
+<table ng-show="show()" class="table">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>SKU</th>
+            <th>Description</th>
+            <th>Stock Qty</th>
+            <th>Price ($)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="product in products">
+            <td>
+                <img ng-src="{{ product.imageUrl }}"  class="img-thumbnail">
+            </td>
+            <td>
+                {{ product.name }}
+            </td>
+            <td>
+                {{ product.sku }}
+            </td>
+            <td>
+                {{ product.description }}
+            </td>
+            <td>
+                {{ product.stockQty }}
+            </td>
+            <td>
+                {{ product.price }}
+            </td>
+            <td>
+                <a href="#/home">Update</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

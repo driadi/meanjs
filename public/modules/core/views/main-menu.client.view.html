@@ -9,13 +9,14 @@
     <li class="dropdown">
         <a  data-toggle="dropdown" class="dropdown-toggle">Products <b class="caret"></b></a>
         <ul class="dropdown-menu">
+            <li><a href="#/products">View All</a></li>
             <li><a href="#">Create New</a></li>
         </ul>
     </li>
     <li class="pull-right">
         <div class="searchBox">
-            <input type="text" ng-model="searchInput" />
-            <input type="button" ng-click="search(searchInput)"  value="GO" />
+            <input type="text" class="input-sm" ng-model="searchInput" placeholder="Search product" />
+            <input type="button" class="btn btn-success" ng-click="search(searchInput)"  value="GO" />
         </div>
     </li>
 </ul>

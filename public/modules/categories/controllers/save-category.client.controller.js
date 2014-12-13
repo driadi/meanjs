@@ -42,7 +42,7 @@
                 },
                 onError = function() {
                     NotificationSvc.error('Unable to find category with ID: ' + categoryId + '. Create new one?');
-                    $location.path('/saveCategory/0');
+                    $location.path('saveCategory/0');
                 };
 
             CategorySvc.get({

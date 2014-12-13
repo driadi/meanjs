@@ -5,12 +5,12 @@
         return {
             restrict: 'E',
             replace: true,
-            templateUrl: 'modules/core/directives/main-menu.html',
+            templateUrl: 'modules/core/views/main-menu.client.view.html',
             link: function($scope) {
-                $scope.searchInput = 'product search';
+                $scope.searchInput = '';
 
                 $scope.search = function(input) {
-                    $location.path('/products').search('search', input);
+                    $location.path('products').search('search', input);
                 };
             }
         };
