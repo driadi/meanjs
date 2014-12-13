@@ -1,0 +1,9 @@
+<div ng-controller="homeCtrl">
+    <h3>Welcome!</h3>
+    Here are the list of categories:
+    <ul>
+        <li ng-repeat="category in categories">
+            <a ng-href="#/saveCategory/{{category._id}}">{{category.name}}</a>
+        </li>
+    </ul>
+</div>

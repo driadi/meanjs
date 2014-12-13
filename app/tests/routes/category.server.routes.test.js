@@ -11,7 +11,7 @@ var should = require('should'),
 * Globals
 */
 var category,
-    path = '/categories/',
+    path = '/api/categories/',
     pathWithId;
 
 /**

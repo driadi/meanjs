@@ -13,7 +13,7 @@ var should = require('should'),
 */
 var category,
     product,
-    path = '/products',
+    path = '/api/products',
     pathwithKeyword = path + '?keyword=',
     pathWithCategoryId = path + '?categoryId=',
     pathWithId;

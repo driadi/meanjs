@@ -1,0 +1,21 @@
+<ul class="nav nav-pills">
+    <li><a href="#/home">Home</a></li>
+    <li class="dropdown">
+        <a  data-toggle="dropdown" class="dropdown-toggle">Categories <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#/saveCategory/0">Create New</a></li>
+        </ul>
+    </li>
+    <li class="dropdown">
+        <a  data-toggle="dropdown" class="dropdown-toggle">Products <b class="caret"></b></a>
+        <ul class="dropdown-menu">
+            <li><a href="#">Create New</a></li>
+        </ul>
+    </li>
+    <li class="pull-right">
+        <div class="searchBox">
+            <input type="text" ng-model="searchInput" />
+            <input type="button" ng-click="search(searchInput)"  value="GO" />
+        </div>
+    </li>
+</ul>

@@ -52,7 +52,7 @@ var update = function(req, res) {
  * List of Categories
  */
 var list = function(req, res) {
-	Category.find().sort('-name').exec(function(err, categories) {
+	Category.find().sort('name').exec(function(err, categories) {
         var error;
 		if (err || !categories) {
             error = errorHandler.generateError('Error occurs when attempting to retrieve category list', err);

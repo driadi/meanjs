@@ -112,7 +112,7 @@ var list = function(req, res) {
         query = Product.find();
     }
 
-    query.sort('-name').populate('categories').exec(function(err, products) {
+    query.sort('nameUpper').populate('categories').exec(function(err, products) {
 		var error;
         if (err || !products) {
             error = errorHandler.generateError('Error occurs when attempting to retrieve product list', err);

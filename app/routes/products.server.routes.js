@@ -1,14 +1,15 @@
 'use strict';
 
 module.exports = function(app) {
-	var products = require('../../app/controllers/products.server.controller');
+	var products = require('../controllers/products.server.controller'),
+        productRoute = '/api/products';
 
 	// Products Routes
-	app.route('/products')
+	app.route(productRoute)
 		.get(products.list)
 		.post(products.create);
 
-	app.route('/products/:productId')
+	app.route(productRoute + '/:productId')
 		.get(products.read)
 		.put(products.update);
 

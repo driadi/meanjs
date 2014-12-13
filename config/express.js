@@ -2,9 +2,10 @@
 
 var express = require('express'),
     bodyParser = require('body-parser'),
+    path = require('path'),
     cors = require('cors'),
     models = [ 'category', 'product' ],
-    routes = [ 'categories', 'products' ];
+    routes = [ 'categories', 'products', 'core' ];
 
 /**
  * Handle errors that may occur in the application
@@ -50,6 +51,8 @@ module.exports = function() {
     routes.forEach(function(route) {
         require('../app/routes/' + route + '.server.routes')(app);
     });
+
+    app.use(express.static(path.resolve('./public')));
 
     handleErrors(app);
 

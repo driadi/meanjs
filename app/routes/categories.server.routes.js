@@ -1,14 +1,15 @@
 'use strict';
 
 module.exports = function(app) {
-	var categories = require('../../app/controllers/categories.server.controller');
+	var categories = require('../controllers/categories.server.controller'),
+        categoryRoute = '/api/categories';
 
 	// Categories Routes
-	app.route('/categories')
+	app.route(categoryRoute)
 		.get(categories.list)
 		.post(categories.create);
 
-	app.route('/categories/:categoryId')
+	app.route(categoryRoute + '/:categoryId')
 		.get(categories.read)
 		.put(categories.update);
 
