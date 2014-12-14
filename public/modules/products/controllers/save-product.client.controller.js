@@ -2,8 +2,11 @@
 
 (function() {
     function productSaveCtrl($scope, $routeParams, $location, ProductSvc, CategorySvc, NotificationSvc ) {
-        var isUpdateMode = true;
 
+        /**
+         * As the checklist-model directive returns object with extra attrs that $resource does not
+         * understand, we need to convert the collection of object to array of category IDs
+         */
         function getCategoryIds(categories) {
             if (!categories || categories.length <= 0) {
                 return categories;
@@ -15,6 +18,8 @@
             });
             return result;
         }
+
+        $scope.isUpdateMode = true;
 
         $scope.categories = CategorySvc.query();
 
@@ -35,7 +40,7 @@
                     NotificationSvc.error(res.data.error.message);
                 };
 
-            if (isUpdateMode) {
+            if ($scope.isUpdateMode) {
                 product.$update(onSuccess, onError);
             } else {
                 product.$save(onSuccess, onError);
@@ -46,7 +51,7 @@
             var productId = $routeParams.productId;
 
             if (productId === '0') {
-                isUpdateMode = false;
+                $scope.isUpdateMode = false;
                 $scope.product = new ProductSvc({
                     name: '',
                     description: '',
