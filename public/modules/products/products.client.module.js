@@ -1,3 +1,3 @@
 'use strict';
 
-prodMgmtApp.registerModule('products');
+prodMgmtApp.registerModule('products', ['checklist-model']);

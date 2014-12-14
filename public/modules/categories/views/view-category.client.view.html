@@ -1,6 +1,6 @@
 <div ng-controller="categoryViewCtrl" ng-init="findOne()">
     <h3>
-        <a href="#/saveCategory/{{category._id}}">Category {{ category.name }}</a>
+        <a href="#/categories/save/{{category._id}}">Category {{ category.name }}</a>
     </h3>
     <p>Products belong to this category:</p>
     <product-list products="products"></product-list>

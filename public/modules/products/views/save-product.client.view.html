@@ -1,0 +1,70 @@
+<div ng-controller="productSaveCtrl" ng-init="findOne()">
+    <h3>Save Product</h3>
+    <table class="table-form">
+        <tr>
+            <td class="col-one">
+                Name:
+            </td>
+            <td>
+                <input type="text" ng-model="product.name" />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                SKU:
+            </td>
+            <td>
+                {{ product.sku }}
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                Description:
+            </td>
+            <td>
+                <input type="text" ng-model="product.description" />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                Price:
+            </td>
+            <td>
+                <input type="text" ng-model="product.price" />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                Stock Qty:
+            </td>
+            <td>
+                <input type="text" ng-model="product.stockQty" />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                Image URL:
+            </td>
+            <td>
+                <input type="text" ng-model="product.imageUrl" />
+            </td>
+        </tr>
+        <tr>
+            <td class="col-one">
+                Categories:
+            </td>
+            <td>
+                <label class="checklist" ng-repeat="category in categories">
+                    <input type="checkbox" checklist-model="product.categories" checklist-value="category">
+                    {{category.name}}
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="button" class="btn btn-info" value="Save" ng-click="save()" />
+                <input type="button" class="btn btn-info" value="Cancel" ng-click="cancel()" />
+            </td>
+        </tr>
+    </table>
+</div>

@@ -16,12 +16,14 @@ var prodMgmtApp = (function() {
         // Setup the routes
         $routeProvider.when("/home",{
             templateUrl: "modules/core/views/home.client.view.html"
-        }).when("/saveCategory/:categoryId",{
+        }).when("/categories/save/:categoryId",{
             templateUrl: "modules/categories/views/save-category.client.view.html"
-        }).when("/viewCategory/:categoryId",{
+        }).when("/categories/:categoryId",{
             templateUrl: "modules/categories/views/view-category.client.view.html"
         }).when("/products",{
             templateUrl: "modules/products/views/view-product.client.view.html"
+        }).when("/products/save/:productId",{
+            templateUrl: "modules/products/views/save-product.client.view.html"
         }).otherwise({redirectTo: "/home"});
     };
 

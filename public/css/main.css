@@ -1,0 +1,28 @@
+body {
+    font-family: "freight-sans-pro-n7, freight-sans-pro",sans-serif;
+    padding: 10px;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+}
+
+.img-thumbnail {
+    max-height: 30px;
+}
+
+.checklist {
+    display: block;
+}
+
+.table-form {
+    width: 400px;
+}
+
+.table-form td {
+    vertical-align: top;
+    padding: 5px;
+}
+
+.table-form .col-one {
+    width: 100px
+}

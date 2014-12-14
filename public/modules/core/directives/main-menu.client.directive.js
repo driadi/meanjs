@@ -7,9 +7,8 @@
             replace: true,
             templateUrl: 'modules/core/views/main-menu.client.view.html',
             link: function($scope) {
-                $scope.searchInput = '';
-
                 $scope.search = function(input) {
+                    $scope.searchInput = '';
                     $location.path('products').search('search', input);
                 };
             }
