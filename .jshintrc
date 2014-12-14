@@ -20,7 +20,7 @@
     "globals": { // Globals variables.
         "jasmine": true,
         "angular": true,
-        "ApplicationConfiguration": true
+        "prodMgmtApp": true
     },
     "predef": [ // Extra globals.
         "define",
@@ -35,7 +35,7 @@
         "it",
         "inject",
         "expect",
-        "prodMgmtApp"
+        "spyOn"
     ],
     "indent": 4, // Specify indentation spacing
     "devel": true, // Allow development statements e.g. `console.log();`.

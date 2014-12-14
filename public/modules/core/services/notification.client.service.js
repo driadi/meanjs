@@ -6,6 +6,10 @@
 (function() {
     var notifications = [];
 
+    function clear() {
+        notifications = [];
+    }
+
     function addNotification(message, isError) {
         var notification = {
             message: message,
@@ -35,6 +39,7 @@
 
     function notificationSvc() {
         return {
+            clear: clear,
             error: error,
             notify: notify,
             getNotifications: getNotifications,

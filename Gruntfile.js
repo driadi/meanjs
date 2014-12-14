@@ -3,11 +3,8 @@
 module.exports = function(grunt) {
     // Unified Watch Object
     var watchFiles = {
-        serverViews: ['app/views/**/*.*'],
         serverJS: ['Gruntfile.js', 'server.js', 'config/**/*.js', 'app/**/*.js'],
-        clientViews: ['public/modules/**/views/**/*.html'],
-        clientJS: ['public/js/*.js', 'public/modules/**/*.js'],
-        clientCSS: ['public/modules/**/*.css'],
+        clientJS: ['public/*.js', 'public/modules/**/*.js'],
         mochaTests: ['app/tests/**/*.js']
     };
 
@@ -44,7 +41,6 @@ module.exports = function(grunt) {
             test: {
                 NODE_ENV: 'test'
             }
-
         },
         mochaTest: {
             test: {
@@ -54,18 +50,20 @@ module.exports = function(grunt) {
                 },
                 src: watchFiles.mochaTests
             }
+        },
+        karma: {
+            unit: {
+                configFile: 'karma.conf.js',
+                browsers: ['PhantomJS']
+            }
         }
     });
 
     require('load-grunt-tasks')(grunt);
 
-
     // Default task(s).
-    grunt.registerTask('default', ['lint', 'test', 'run-dev']);
-
-    // Lint task(s).
-    grunt.registerTask('lint', ['jshint']);
+    grunt.registerTask('default', ['jshint', 'test', 'run-dev']);
 
     grunt.registerTask('run-dev', ['env:development', 'nodemon']);
-    grunt.registerTask('test', ['env:test', 'mochaTest']);
+    grunt.registerTask('test', ['env:test', 'mochaTest', 'karma']);
 };
