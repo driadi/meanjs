@@ -19,7 +19,7 @@ var db = mongoose.connect(config.db, function(err) {
 var app = require('./config/express')();
 
 // Start the app by listening on <port>
-app.listen(config.runningPort);
+app.listen(process.env.PORT || config.runningPort);
 
 // Logging initialization
 console.log('MEAN.JS application started on port ' + config.runningPort);
